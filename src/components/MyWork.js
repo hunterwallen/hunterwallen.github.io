@@ -28,11 +28,6 @@ export default function About(props) {
 		    <p className="projectInfo">Social media application that operates under the premise that less is more. This application uses Express, Node.js, MongoDB Atlas and EJS to create a multi-page experience.</p>
 		    <a href="https://github.com/hunterwallen/1LINR" className="gitRepoLinks">Git Repo</a>
 		  </li>
-		 <li class="projectLink">
-		   <a href="https://immense-journey-81303.herokuapp.com/store/" target='_blank' className="projectTitles">COmade Store</a>
-		   <p className="projectInfo">Multi-page store application built using Express, Node.js, MongoDB Atlas and EJS. This is my first full stack application project.</p>
-		   <a href="https://github.com/hunterwallen/COmade" className="gitRepoLinks">Git Repo</a>
-		 </li>
 		   <li class="projectLink">
 		     <a href="https://boring-booth-b430fc.netlify.app/" target='_blank' className="projectTitles">FlashNewz</a>
 		     <p className="projectInfo">This application pulls information from the New York Times API and displays them in a simple, easy to digest format.</p>
