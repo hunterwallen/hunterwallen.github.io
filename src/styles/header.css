@@ -1,0 +1,42 @@
+
+
+.topNav{
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  margin: -.5em;
+}
+.headerLogo {
+  width: 10em;
+}
+.homeLogoBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+.headerLinks {
+  text-decoration: none;
+  color: grey;
+  font-family: sans-serif;
+  font-size: 1.25em;
+  padding: 2em;
+}
+.headerLinks:hover {
+  text-decoration: underline;
+
+}
+.topNavLinks {
+  width: 80%;
+  max-width: 40em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.active {
+  text-decoration: underline;
+  color: whitesmoke;
+}
