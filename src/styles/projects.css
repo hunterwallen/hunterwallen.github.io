@@ -1,0 +1,62 @@
+.projectsLinks {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	max-width: 100%;
+	align-items: flex-start;
+	justify-content: center;
+}
+.projectLink {
+	width: 48%;
+  max-width: 25em;
+	height: 30em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background: rgba(10, 10, 10, 1);
+	margin: 1.5em;
+	border-radius: 5px;
+	padding: 2em;
+	box-sizing: border-box;
+  filter: drop-shadow(0 0 5px grey);
+}
+
+
+
+.projectHeader {
+	margin: .5em auto;
+}
+.gitRepoLinks {
+	font-size: .75em;
+}
+.projectInfo {
+  color: white;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+.projectTitles {
+  color: rgb(29, 158, 170);
+  text-decoration: none;
+  padding: 1em;
+  font-size: 1.5em;
+}
+.projectTitles:hover {
+	color: lightgrey;
+	transition-duration: .3s;
+}
+
+
+.gitRepoLinks {
+  color: lightgrey;
+  text-decoration: none;
+  font-size: 1em;
+  margin: 0 .5em;
+  padding: .5em;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+.gitRepoLinks:hover {
+  border: 2px solid white;
+  color: white;
+}
