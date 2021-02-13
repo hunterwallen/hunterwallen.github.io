@@ -3,9 +3,14 @@
   justify-content: space-between;
   background-color: black;
   margin: -.5em;
+  filter: drop-shadow(0 0 8px black);
 }
 .headerLogo {
   width: 10em;
+}
+.headerNameBadge {
+  font-family: 'Oxygen', sans-serif;
+  color: whitesmoke;
 }
 .homeLogoBtn {
   display: flex;
@@ -17,7 +22,7 @@
 .headerLinks {
   text-decoration: none;
   color: grey;
-  font-family: sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-size: 1.25em;
   padding: 2em;
 }
