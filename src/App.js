@@ -48,8 +48,9 @@ function App() {
               <Link to={'/about'} className='headerLinks' onClick={changeActive} id='/about'>About</Link>
               <Link to={'/contact'} className='headerLinks' onClick={changeActive} id='/contact'>Contact</Link>
             </div>
-          </div>
 
+          </div>
+          <div className="topPadding"></div>
 
             <Route path="/portfolio"
             render={(props) => <MyWork />} />
