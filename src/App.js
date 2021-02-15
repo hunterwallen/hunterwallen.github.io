@@ -1,5 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
 // import Header from './components/Header'
 import About from './components/About'
 import Contact from './components/Contact'
@@ -11,9 +13,24 @@ import headerstyle from './styles/header.css'
 
 
 function App() {
-  let changeActive = (event) => {
+
+  const [location, setLocation] = useState('/')
+
+  useEffect(()=> {
+    const storedLocation = localStorage.getItem("location") || '/'
+    setLocation(storedLocation)
+  }, [])
+
+  useEffect(()=> {
+    localStorage.setItem("location", location)
     document.querySelector('.active').classList.remove('active')
-    event.currentTarget.classList.add('active')
+    document.getElementById(`${location}`).classList.add('active')
+    console.log(location);
+  }, [location])
+
+
+  let changeActive = (event) => {
+    setLocation(event.target.id)
   }
 
   return (
@@ -26,10 +43,10 @@ function App() {
               <h1 className="headerNameBadge">Hunter Wallen</h1>
             </Link>
             <div className='topNavLinks'>
-              <Link to={'/'} className='headerLinks active' onClick={changeActive}>Home</Link>
-              <Link to={'/portfolio'} className='headerLinks' onClick={changeActive}>Portfolio</Link>
-              <Link to={'/about'} className='headerLinks' onClick={changeActive}>About</Link>
-              <Link to={'/contact'} className='headerLinks' onClick={changeActive}>Contact</Link>
+              <Link to={'/'} className='headerLinks active' onClick={changeActive} id='/'>Home</Link>
+              <Link to={'/portfolio'} className='headerLinks' onClick={changeActive} id='/portfolio'>Portfolio</Link>
+              <Link to={'/about'} className='headerLinks' onClick={changeActive} id='/about'>About</Link>
+              <Link to={'/contact'} className='headerLinks' onClick={changeActive} id='/contact'>Contact</Link>
             </div>
           </div>
 
