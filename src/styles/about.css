@@ -1,12 +1,13 @@
 .fullAboutPage{
-  background-color: black;
-  margin: 3em 2em;
+ margin: 3em 0;
+}
+.aboutContent {
   padding: 1em;
   border-radius: 5px;
   filter: drop-shadow(0 0 5px grey);
-}
-.aboutContent {
-  width: 70%;
+  background-color: black;
+  max-width: 45em;
+  min-width: 65vw;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
