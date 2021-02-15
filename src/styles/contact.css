@@ -1,0 +1,85 @@
+.contactContainer {
+  padding-top: 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Oxygen', sans-serif;
+}
+
+#newPostForm {
+  background-color: black;
+  padding: 3em 3em 5em 3em;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 5px grey);
+  min-width: 60vw;
+}
+.formH1 {
+  color: white;
+  text-align: center;
+  margin: 0 0 .5em 0;
+}
+.emailContainer {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.emailContainer  h3 {
+  color: rgb(29, 158, 170);
+  margin: .5em auto;
+  font-family: 'Ubuntu', sans-serif;
+}
+.emailContainer label {
+  padding-bottom: .5em;
+  padding-top: 2em;
+}
+.emailContainer input, .emailContainer textarea {
+  font-size: 1rem;
+  padding: .75em;
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  border: 2px solid whitesmoke;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+.emailContainer textarea {
+  height: 10em;
+  margin-bottom: 2em;
+  resize: vertical;
+
+}
+.emailContainer input:focus, .emailContainer textarea:focus {
+  border: 2px solid rgb(29, 158, 170);;
+  outline: none;
+}
+#submitPost {
+  width: 50%;
+  align-self: center;
+  background-color: rgb(29, 158, 170);
+  color: white;
+  font-size: 1em;
+  border: 2px solid rgb(29, 158, 170);
+}
+#submitPost:hover {
+  cursor: pointer;
+  border: 2px solid white;
+}
+.contactIcons {
+  height: 5em;
+  border-radius: 5px;
+  margin: 2em;
+}
+.bottomContactDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5em;
+}
+.iconDiv {
+  display: flex;
+  flex-direction: row;
+
+}

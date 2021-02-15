@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import Avatar from "./assets/avatar.jpg";
+import Github from "./assets/github.png";
+import LinkedIn from "./assets/linkedin.png";
+import Gmail from "./assets/gmail.png";
+import contactStyles from '../styles/contact.css'
 
 
 export default function About(props) {
@@ -36,6 +39,7 @@ export default function About(props) {
 	const sendMessage = (event) => {
 		event.preventDefault()
 		document.querySelector('#submitPost').style.pointerEvents = "none"
+		document.querySelector('#submitPost').style.cursor = "auto"
 		let templateParams = {
 			subject: subject,
 			name: name,
@@ -57,13 +61,13 @@ export default function About(props) {
 
 	return (
 		<React.Fragment>
-    <div style={{ textAlign: "center" }}>
-      <h1>Want to say hello?</h1>
+    <div className="contactContainer">
 			<div className="topContactDiv">
 				<h3 id="messageSuccess" style={{display: "none"}}>Thank you! Your message has been successfully submitted. I will be in touch soon!</h3>
 				<form onSubmit={sendMessage} id='newPostForm'>
-	            <div className="container emailContainer">
-	              <p id="topP">Let's connect!</p>
+				<h1 className="formH1">Want to say hello?</h1>
+	            <div className="emailContainer">
+								<h3>You can use the form below to send me a message!</h3>
 
 	              <label htmlFor="subject"><b>Subject</b></label>
 	              <input type="text" placeholder="Subject" id="subject" onChange={changeSubject}/>
@@ -86,15 +90,23 @@ export default function About(props) {
 
 	          </form>
 					</div>
-				<h1>OR</h1>
+				<h1></h1>
 			<div className="bottomContactDiv">
-				<h2>You can find me here too!</h2>
-	      <h2>Hunter Wallen</h2>
-	      <h3>hunterwallen67@gmail.com</h3>
-				<a href='https://www.linkedin.com/in/hunter-wallen'>LinkedIn</a>
-				<br/>
-				<a href='https://github.com/hunterwallen'>GitHub</a>
-	      
+				<h2>You can also find me here!</h2>
+				<div className="iconDiv">
+		      <a href= 'mailto: hunterwallen67@gmail.com' class="emailLink">
+					<img src={Gmail} alt="Gmail" className='contactIcons' />
+					</a>
+					<br/>
+					<a href='https://github.com/hunterwallen'>
+						<img src={Github} alt="GitHub" className='contactIcons' />
+					</a>
+					<br/>
+					<a href='https://www.linkedin.com/in/hunter-wallen'>
+						<img src={LinkedIn} alt="LinkedIn" className='contactIcons' />
+					</a>
+					<br/>
+				</div>
 			</div>
     </div>
 		</React.Fragment>

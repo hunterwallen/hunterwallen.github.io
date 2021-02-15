@@ -5,6 +5,7 @@
 	max-width: 100%;
 	align-items: flex-start;
 	justify-content: center;
+  font-family: 'Oxygen', sans-serif;
 }
 .projectLink {
 	width: 48%;
@@ -34,6 +35,7 @@
   color: white;
   font-family: sans-serif;
   line-height: 1.5;
+  font-family: 'Ubuntu', sans-serif;
 }
 .projectTitles {
   color: rgb(29, 158, 170);
