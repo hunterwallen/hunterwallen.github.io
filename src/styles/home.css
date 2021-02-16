@@ -1,0 +1,65 @@
+
+.landingPage {
+
+width: calc(100vw - 1em);
+margin: -1em -.5em;
+}
+
+.homeDiv {
+  box-sizing: border-box;
+  height: calc(100vh - 7em);
+  width: 100%;
+  background-color: black;
+
+  padding: 2em;
+}
+
+.div1 {
+   background: url('../components/assets/coverimage.jpg');
+   background-size: cover;
+   background-position: left;
+   display: flex;
+   padding: 6em;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: center;
+   font-family: 'Oxygen', sans-serif;
+}
+.div1Text {
+  color: whitesmoke;
+  background-color: rgba(10, 10, 10, .8);
+  padding: 3em;
+  margin: 0;
+  border-radius: 10px;
+
+}
+
+@keyframes bounce {
+  0%,  50%,  100% {transform: translateY(0);}
+  25% {transform: translateY(15px);}
+  75% {transform: translateY(15px);}
+}
+.downArrow {
+  width: 3em;
+  animation: bounce 2s infinite;
+}
+
+
+
+.div2 {
+
+  background-color: whitesmoke;
+}
+
+.div3 {
+     background-color: lightgrey;
+
+}
+
+.div4 {
+  background-color: grey;
+}
+
+.div5 {
+ background-color: black;
+}

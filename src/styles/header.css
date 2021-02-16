@@ -4,13 +4,15 @@
   background-color: black;
   filter: drop-shadow(0 0 8px black);
   position: fixed;
-  width: 100%;
+  width: 100vw;
   top: -.5em;
   left: -.5em;
   z-index: 2;
+
 }
 .headerLogo {
   width: 10em;
+  margin-left: 2em;
 }
 .headerNameBadge {
   font-family: 'Oxygen', sans-serif;

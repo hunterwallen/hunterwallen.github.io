@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-d
 import { createBrowserHistory } from "history";
 
 // import Header from './components/Header'
+import Home from './components/LandingPage'
 import About from './components/About'
 import Contact from './components/Contact'
 import MyWork from './components/MyWork'
@@ -40,7 +41,6 @@ function App() {
           <div className="topNav">
             <Link to={'/'} className="homeLogoBtn">
               <img src={Logo} alt='H' className='headerLogo'/>
-              <h1 className="headerNameBadge">Hunter Wallen</h1>
             </Link>
             <div className='topNavLinks'>
               <Link to={'/'} className='headerLinks active' onClick={changeActive} id='/'>Home</Link>
@@ -52,6 +52,7 @@ function App() {
           </div>
           <div className="topPadding"></div>
 
+            <Route exact path="/" render={(props) => <Home />} />
             <Route path="/portfolio"
             render={(props) => <MyWork />} />
   					<Route path="/about" render={(props) => <About />} />
