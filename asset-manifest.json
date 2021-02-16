@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.d96c0a11.chunk.css",
-    "main.js": "/static/js/main.727f7177.chunk.js",
-    "main.js.map": "/static/js/main.727f7177.chunk.js.map",
+    "main.css": "/static/css/main.ff2ce99f.chunk.css",
+    "main.js": "/static/js/main.94d664b3.chunk.js",
+    "main.js.map": "/static/js/main.94d664b3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e9234545.js",
     "runtime-main.js.map": "/static/js/runtime-main.e9234545.js.map",
     "static/js/2.ba17b3d4.chunk.js": "/static/js/2.ba17b3d4.chunk.js",
     "static/js/2.ba17b3d4.chunk.js.map": "/static/js/2.ba17b3d4.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.d96c0a11.chunk.css.map": "/static/css/main.d96c0a11.chunk.css.map",
+    "static/css/main.ff2ce99f.chunk.css.map": "/static/css/main.ff2ce99f.chunk.css.map",
     "static/js/2.ba17b3d4.chunk.js.LICENSE.txt": "/static/js/2.ba17b3d4.chunk.js.LICENSE.txt",
     "static/media/1linr.cae89886.png": "/static/media/1linr.cae89886.png",
     "static/media/CouchGourmet.453f2d24.png": "/static/media/CouchGourmet.453f2d24.png",
@@ -32,7 +32,7 @@
   "entrypoints": [
     "static/js/runtime-main.e9234545.js",
     "static/js/2.ba17b3d4.chunk.js",
-    "static/css/main.d96c0a11.chunk.css",
-    "static/js/main.727f7177.chunk.js"
+    "static/css/main.ff2ce99f.chunk.css",
+    "static/js/main.94d664b3.chunk.js"
   ]
 }
