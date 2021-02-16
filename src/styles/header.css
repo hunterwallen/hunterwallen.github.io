@@ -68,12 +68,20 @@
     font-size: 1.5em;
   }
   .headerLinks {
-    padding: 1em;
+    padding: .5em;
   }
 }
 
-@media (max-width: 364px) {
+@media (max-width: 492px) {
+  .headerLogo {
+    margin-left: .5em;
+    width: 7em;
+  }
   .headerLinks {
-    padding: .25em;
+    text-align: center;
+    border: 1px solid white;
+    width: 40%;
+    min-width: 5em;
+    padding: .15em;
   }
 }
