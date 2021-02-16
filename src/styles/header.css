@@ -30,7 +30,7 @@
   color: grey;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.25em;
-  padding: 2em;
+  padding: .5em;
 }
 .headerLinks:hover {
   text-decoration: underline;
@@ -74,13 +74,6 @@
 
 @media (max-width: 364px) {
   .headerLinks {
-    padding: .5em;
-  }
-}
-
-@media (max-width: 344px) {
-  .headerLinks {
     padding: .25em;
-
   }
 }
