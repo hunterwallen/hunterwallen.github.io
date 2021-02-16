@@ -32,6 +32,8 @@ function App() {
 
 
   let changeActive = (event) => {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
     if(event.currentTarget.id === "logoHome") {
       setLocation("/")
     } else {

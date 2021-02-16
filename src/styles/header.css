@@ -4,7 +4,7 @@
   background-color: black;
   filter: drop-shadow(0 0 8px black);
   position: fixed;
-  width: 100vw;
+  width: calc(100vw + .5em);
   top: -.5em;
   left: -.5em;
   z-index: 2;
