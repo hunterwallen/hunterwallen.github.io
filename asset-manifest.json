@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d96c0a11.chunk.css",
+    "main.js": "/static/js/main.727f7177.chunk.js",
+    "main.js.map": "/static/js/main.727f7177.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e9234545.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e9234545.js.map",
+    "static/js/2.ba17b3d4.chunk.js": "/static/js/2.ba17b3d4.chunk.js",
+    "static/js/2.ba17b3d4.chunk.js.map": "/static/js/2.ba17b3d4.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.d96c0a11.chunk.css.map": "/static/css/main.d96c0a11.chunk.css.map",
+    "static/js/2.ba17b3d4.chunk.js.LICENSE.txt": "/static/js/2.ba17b3d4.chunk.js.LICENSE.txt",
+    "static/media/1linr.cae89886.png": "/static/media/1linr.cae89886.png",
+    "static/media/CouchGourmet.453f2d24.png": "/static/media/CouchGourmet.453f2d24.png",
+    "static/media/FlashNewz.0ba0b9d6.png": "/static/media/FlashNewz.0ba0b9d6.png",
+    "static/media/Reddit.de697090.png": "/static/media/Reddit.de697090.png",
+    "static/media/SunnyShelter.7091daf7.png": "/static/media/SunnyShelter.7091daf7.png",
+    "static/media/avatar.8814d731.jpg": "/static/media/avatar.8814d731.jpg",
+    "static/media/blackdownarrow.394f1ffa.png": "/static/media/blackdownarrow.394f1ffa.png",
+    "static/media/home.css": "/static/media/coverimage.c1921378.jpg",
+    "static/media/downarrow.9edfd30d.png": "/static/media/downarrow.9edfd30d.png",
+    "static/media/express.cca64e0f.png": "/static/media/express.cca64e0f.png",
+    "static/media/featurepick.4aa2a2a0.png": "/static/media/featurepick.4aa2a2a0.png",
+    "static/media/github.578fb018.png": "/static/media/github.578fb018.png",
+    "static/media/gmail.411611da.png": "/static/media/gmail.411611da.png",
+    "static/media/mongodb.2aac4b86.png": "/static/media/mongodb.2aac4b86.png",
+    "static/media/postgres.0f01d56a.png": "/static/media/postgres.0f01d56a.png",
+    "static/media/rails.e20d131d.png": "/static/media/rails.e20d131d.png",
+    "static/media/react.14d4677c.png": "/static/media/react.14d4677c.png",
+    "static/media/reactnative.fad73e03.png": "/static/media/reactnative.fad73e03.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e9234545.js",
+    "static/js/2.ba17b3d4.chunk.js",
+    "static/css/main.d96c0a11.chunk.css",
+    "static/js/main.727f7177.chunk.js"
+  ]
+}
