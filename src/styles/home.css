@@ -1,13 +1,13 @@
 
 .landingPage {
 
-width: calc(100vw - 1em);
+width: calc(100vw);
 margin: -1em -.5em;
 }
 
 .homeDiv {
   box-sizing: border-box;
-  height: calc(100vh - 7em);
+  height: calc(100vh );
   width: 100%;
   background-color: black;
 
@@ -29,7 +29,7 @@ margin: -1em -.5em;
   color: whitesmoke;
   background-color: rgba(10, 10, 10, .8);
   padding: 3em;
-  margin: 0;
+  margin: 0 0 7em 0;
   border-radius: 10px;
 
 }
@@ -47,19 +47,137 @@ margin: -1em -.5em;
 
 
 .div2 {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Oxygen', sans-serif;
+  color: grey;
   background-color: whitesmoke;
+}
+.div2Text {
+  padding: 0 2em;
+}
+.div2Logos {
+  width: 95%;
+  height: 55%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em;
+}
+.techLogo {
+  height: 40%;
+  margin: 1em;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 3px lightgrey);
+}
+.div2SecondText {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+  text-align: right;
+}
+.downArrow2 {
+  width: 3.5em;
+  height: 2.5em;
+  animation: bounce 2s infinite;
+  color: black;
+  margin: 1em 2em;
 }
 
 .div3 {
      background-color: lightgrey;
-
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     background-image: URL('../components/assets/challengepic.jpeg');
+     background-size: cover;
+     padding: 0;
+}
+/* .challengeImg {
+  width: 60%;
+  height: 70%;
+  border-radius: 20%;
+} */
+.leftDiv3 {
+  box-sizing: border-box;
+ height: 100%;
+ width: 100%;
+ background-color: rgba(100, 100, 100, .5);
+ color: white;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ font-family: 'Oxygen', sans-serif;
+ font-size: 2.5em;
+ padding: 2em;
 }
 
 .div4 {
-  background-color: grey;
+  background-color: black;
+  color: rgb(29, 158, 170);
+   font-family: 'Oxygen', sans-serif;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+
+}
+.div4 h3 {
+  text-align: center;
+  font-size: 2em;
+  padding: 2em;
+
+}
+.landingPageContactDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+.landingPageIconDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  height: 50%;
+  width: 60%;
+}
+.landingPageContactIcons {
+ height: 10vw;
+ border-radius: 10px;
+ filter: drop-shadow(0 0 5px grey);
 }
 
-.div5 {
- background-color: black;
+
+
+@media (max-width: 700px) {
+  .techLogo {
+    height: 20%;
+  }
+  .div2 h1 {
+    font-size: 1em;
+  }
+  .downArrow2 {
+    width: 2em;
+    height: 1em;
+  }
+  .leftDiv3 {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 475px) {
+  .homeDiv {
+    padding: 1.5em;
+  }
+  .div1Text {
+    padding: 1em;
+  }
 }

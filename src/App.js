@@ -20,6 +20,7 @@ function App() {
   useEffect(()=> {
     const storedLocation = localStorage.getItem("location") || '/'
     setLocation(storedLocation)
+    console.log(location);
   }, [])
 
   useEffect(()=> {
@@ -31,7 +32,11 @@ function App() {
 
 
   let changeActive = (event) => {
-    setLocation(event.target.id)
+    if(event.currentTarget.id === "logoHome") {
+      setLocation("/")
+    } else {
+      setLocation(event.target.id)
+    }
   }
 
   return (
@@ -39,7 +44,7 @@ function App() {
 
         <Router>
           <div className="topNav">
-            <Link to={'/'} className="homeLogoBtn">
+            <Link to={'/'} className="homeLogoBtn" onClick={changeActive} id="logoHome">
               <img src={Logo} alt='H' className='headerLogo'/>
             </Link>
             <div className='topNavLinks'>

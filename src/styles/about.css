@@ -1,7 +1,41 @@
+
+@keyframes bounceIn {
+0% {transform: translateY(-1000px)}
+100% {transform: translateY(0)}
+}
+
+@-moz-keyframes bounceIn {
+0% {transform: translateY(-1000px)}
+100% {transform: translateY(0)}
+}
+
+@-webkit-keyframes bounceIn {
+0% {transform: translateY(-1000px)}
+100% {transform: translateY(0)}
+}
+
+@-o-keyframes bounceIn {
+0% {transform: translateY(-1000px)}
+100% {transform: translateY(0)}
+}
+
+@-ms-keyframes bounceIn {
+0% {transform: translateY(-1000px)}
+100% {transform: translateY(0)}
+}
+
+
+
+
 .fullAboutPage{
  margin: 2em 0;
 }
 .aboutContent {
+  animation: bounceIn .7s;
+  -webkit-animation: bounceIn .7s;
+  -moz-animation: bounceIn .7s;
+  -o-animation: bounceIn .7s;
+  -ms-animation: bounceIn .7s;
   padding: 1em;
   border-radius: 5px;
   filter: drop-shadow(0 0 5px grey);

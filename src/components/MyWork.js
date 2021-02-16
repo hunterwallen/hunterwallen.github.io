@@ -13,7 +13,7 @@ export default function About(props) {
     <ul class='projectsLinks'>
 		<li class="projectLink">
 			<div className="titleAndPicDiv">
-				<a href="#" target='_blank' className="projectTitles">Vigor
+				<a href="https://play.google.com/store/apps/details?id=com.hunterwallen.reactnativefirebase" target='_blank' className="projectTitles">Vigor
 				<img src={Vigor} alt='Vigor' className="appPic" />
 				</a>
 			</div>

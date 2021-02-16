@@ -55,11 +55,14 @@
 }
 
 @media (max-width: 880px) {
+  .topPadding {
+    height: 7em;
+  }
   .topNav {
-    padding: 1em;
+    padding: .5em;
   }
   .headerLogo {
-    width: 5em;
+    width: 8em;
   }
   .headerNameBadge {
     font-size: 1.5em;

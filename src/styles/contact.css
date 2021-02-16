@@ -1,3 +1,31 @@
+
+@keyframes bounceLeft {
+0% {transform: translateX(1000px)}
+100%{transform: translateX(0)}
+}
+
+@-moz-keyframes bounceLeft {
+0% {transform: translateX(1000px)}
+100%{transform: translateX(0)}
+}
+
+@-webkit-keyframes bounceLeft {
+0% {transform: translateX(1000px)}
+100%{transform: translateX(0)}
+}
+
+@-o-keyframes bounceLeft {
+0% {transform: translateX(1000px)}
+100%{transform: translateX(0)}
+}
+
+@-ms-keyframes bounceLeft {
+0% {transform: translateX(1000px)}
+100%{transform: translateX(0)}
+}
+
+
+
 .contactContainer {
   padding-top: 2em;
   display: flex;
@@ -8,6 +36,11 @@
 }
 
 #newPostForm {
+  animation: bounceLeft ease .7s;
+  -webkit-animation: bounceLeft ease .7s;
+  -moz-animation: bounceLeft ease .7s;
+  -o-animation: bounceLeft ease .7s;
+  -ms-animation: bounceLeft ease .7s;
   background-color: black;
   padding: 3em 3em 5em 3em;
   border-radius: 8px;
@@ -71,6 +104,7 @@
   height: 5em;
   border-radius: 5px;
   margin: .5em;
+  filter: drop-shadow(0 0 3px lightgrey);
 }
 .bottomContactDiv {
   display: flex;
