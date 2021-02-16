@@ -68,8 +68,8 @@ margin: -1em -.5em;
   padding: 1em;
 }
 .techLogo {
-  height: 40%;
-  margin: 1em;
+  width: 15%;
+  margin:1em;
   border-radius: 5px;
   filter: drop-shadow(0 0 3px lightgrey);
 }
@@ -159,9 +159,7 @@ margin: -1em -.5em;
 
 
 @media (max-width: 700px) {
-  .techLogo {
-    height: 20%;
-  }
+
   .div2 h1 {
     font-size: 1em;
   }
@@ -186,12 +184,10 @@ margin: -1em -.5em;
     padding: .5em;
   }
   .div2Logos {
-    height: 75%;
+
     padding: 0;
   }
-  .techLogo {
-    height: 15%;
-  }
+
 }
 @media(max-width: 354px){
   .div2Logos {
