@@ -49,7 +49,7 @@ margin: -1em -.5em;
 .div2 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   font-family: 'Oxygen', sans-serif;
   color: grey;
   background-color: whitesmoke;
@@ -80,6 +80,7 @@ margin: -1em -.5em;
   justify-content: flex-end;
   align-items: baseline;
   text-align: right;
+  margin-top: 1em;
 }
 .downArrow2 {
   width: 3.5em;
