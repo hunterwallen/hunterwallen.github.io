@@ -56,7 +56,7 @@
 
 @media (max-width: 880px) {
   .topPadding {
-    height: 7em;
+    height: 8em;
   }
   .topNav {
     padding: .5em;
@@ -69,5 +69,18 @@
   }
   .headerLinks {
     padding: 1em;
+  }
+}
+
+@media (max-width: 364px) {
+  .headerLinks {
+    padding: .75em;
+  }
+}
+
+@media (max-width: 344px) {
+  .headerLinks {
+    padding: .25em;
+
   }
 }

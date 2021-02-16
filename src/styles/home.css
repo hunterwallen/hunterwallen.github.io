@@ -140,6 +140,7 @@ margin: -1em -.5em;
   align-items: center;
   width: 100%;
   height: 50%;
+
 }
 .landingPageIconDiv {
   display: flex;
@@ -150,7 +151,7 @@ margin: -1em -.5em;
   width: 60%;
 }
 .landingPageContactIcons {
- height: 10vw;
+ height: 3em;
  border-radius: 5px;
  filter: drop-shadow(0 0 5px rgb(50, 50, 50));
 }
@@ -182,5 +183,19 @@ margin: -1em -.5em;
   }
   .div4 h3 {
     font-size: 1.5em;
+    padding: .5em;
   }
+}
+@media(max-width: 354px){
+  .div2Logos {
+    height: 75%;
+    padding: 0;
+  }
+  .div2 {
+    justify-content: space-between;
+  }
+  .techLogo {
+    margin: .5em;
+  }
+
 }
