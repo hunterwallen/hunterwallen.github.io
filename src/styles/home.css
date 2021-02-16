@@ -151,8 +151,8 @@ margin: -1em -.5em;
 }
 .landingPageContactIcons {
  height: 10vw;
- border-radius: 10px;
- filter: drop-shadow(0 0 5px grey);
+ border-radius: 5px;
+ filter: drop-shadow(0 0 5px rgb(50, 50, 50));
 }
 
 
@@ -179,5 +179,8 @@ margin: -1em -.5em;
   }
   .div1Text {
     padding: 1em;
+  }
+  .div4 h3 {
+    font-size: 1.5em;
   }
 }
