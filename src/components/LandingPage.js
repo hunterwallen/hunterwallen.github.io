@@ -72,7 +72,7 @@ export default function About(props) {
 								<a href='https://www.linkedin.com/in/hunter-wallen' target="_blank">
 									<img src={LinkedIn} alt="LinkedIn" className='landingPageContactIcons' />
 								</a>
-								<br/>
+
 							</div>
 						</div>
 				</div>

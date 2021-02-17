@@ -143,18 +143,23 @@ margin: -1em -.5em;
   height: 50%;
 
 }
+.landingPageContactDiv h2 {
+  color: lightgrey;
+}
 .landingPageIconDiv {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: baseline;
   height: 50%;
-  width: 60%;
+  width: 40%;
+
 }
 .landingPageContactIcons {
- height: 3em;
+ height: 4em;
  border-radius: 5px;
  filter: drop-shadow(0 0 5px rgb(50, 50, 50));
+
 }
 
 
@@ -170,6 +175,10 @@ margin: -1em -.5em;
   }
   .leftDiv3 {
     font-size: 1.5em;
+  }
+  .landingPageIconDiv {
+    width: 90%;
+
   }
 }
 
@@ -188,7 +197,9 @@ margin: -1em -.5em;
 
     padding: 0;
   }
-
+  .landingPageContactIcons {
+    height: 3em;
+  }
 }
 @media(max-width: 354px){
   .div2Logos {

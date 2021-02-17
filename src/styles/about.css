@@ -40,7 +40,7 @@
   border-radius: 5px;
   filter: drop-shadow(0 0 5px grey);
   background-color: black;
-  max-width: 45em;
+  max-width:50em;
   min-width: 65vw;
   margin: 0 auto;
   display: flex;
@@ -58,15 +58,16 @@
   filter: drop-shadow(0 0 5px white);
 }
 .aboutContent h1 {
-  margin: 2em 0;
+  margin: 4em 1em 4em 1em;
   font-size: 1.25em;
   color: rgb(29, 158, 170);
-
+  max-width: 40em;
   font-family: 'Oxygen', sans-serif;
   font-weight:  100;
 }
 .nameTitle {
   font-size: 2em;
+  margin: 2em 0;
   color: whitesmoke;
   font-family: 'Ubuntu', sans-serif;
 }
