@@ -15,6 +15,12 @@ import ChallengePic from "./assets/challengepic.jpeg"
 import Github from "./assets/github.png";
 import LinkedIn from "./assets/linkedin.png";
 import Gmail from "./assets/gmail.png";
+import Redux from "./assets/redux.png"
+import Firebase from './assets/firebase.png'
+import Typescript from './assets/typescript.png'
+import MySQL from './assets/mysql.png'
+import Python from './assets/python.png'
+import Django from './assets/django.png'
 
 export default function About(props) {
 	return (
@@ -33,14 +39,26 @@ export default function About(props) {
 						<h1 className="secondDivText">So far, I have experience with...</h1>
 					</div>
 					<div className="div2Logos">
-						<img src={Javascript} alt="Javascript" className="techLogo" />
-						<img src={Express} alt="Express" className="techLogo" />
-						<img src={Mongo} alt="MongoDB" className="techLogo" />
-						<img src={Node} alt="Node" className="techLogo" />
-						<img src={ReactLogo} alt="React.js" className="techLogo" />
-						<img src={Postgres} alt="PostgresQL" className="techLogo" />
-						<img src={Rails} alt="Rails" className="techLogo" />
-						<img src={ReactNative} alt="React Native" className="techLogo" />
+						<div className='logoRow' >
+							<img src={Typescript} alt="Typescript" className="techLogo" />
+							<img src={Javascript} alt="Javascript" className="techLogo" />
+							<img src={Python} alt="Python" className="techLogo" />
+							<img src={Node} alt="Node" className="techLogo" />
+							<img src={ReactNative} alt="React Native" className="techLogo" />
+						</div>
+						<div className='logoRow' >
+							<img src={Redux} alt="Redux" className="techLogo" />
+							<img src={ReactLogo} alt="React.js" className="techLogo" />
+							<img src={Express} alt="Express" className="techLogo" />
+							<img src={Django} alt="Django" className="techLogo" />
+							<img src={Rails} alt="Rails" className="techLogo" />
+						</div>
+						<div className='logoRow' >
+							<img src={Firebase} alt="Firebase" className="techLogo" />
+							<img src={Postgres} alt="PostgresQL" className="techLogo" />
+							<img src={Mongo} alt="MongoDB" className="techLogo" />
+							<img src={MySQL} alt="MySQL" className="techLogo" />
+						</div>
 					</div>
 					<div className="div2SecondText">
 						<h1 className="secondDivText">...and I'm learning more everyday.</h1>
@@ -61,15 +79,15 @@ export default function About(props) {
 						<div className="landingPageContactDiv">
 							<h2>You can also find me here!</h2>
 							<div className="landingPageIconDiv">
-					      <a href= 'mailto: hunterwallen67@gmail.com' class="emailLink">
+					      <a href= 'mailto: hunterwallen67@gmail.com' className='landingPageContactLink' >
 								<img src={Gmail} alt="Gmail" className='landingPageContactIcons' />
 								</a>
 								<br/>
-								<a href='https://github.com/hunterwallen'>
+								<a href='https://github.com/hunterwallen' className='landingPageContactLink' >
 									<img src={Github} alt="GitHub" className='landingPageContactIcons' />
 								</a>
 								<br/>
-								<a href='https://www.linkedin.com/in/hunter-wallen'>
+								<a href='https://www.linkedin.com/in/hunter-wallen' className='landingPageContactLink' >
 									<img src={LinkedIn} alt="LinkedIn" className='landingPageContactIcons' />
 								</a>
 								<br/>
