@@ -98,11 +98,11 @@ export default function About(props) {
 					<img src={Gmail} alt="Gmail" className='contactIcons' />
 					</a>
 					<br/>
-					<a href='https://github.com/hunterwallen'>
+					<a href='https://github.com/hunterwallen' target="_blank" >
 						<img src={Github} alt="GitHub" className='contactIcons' />
 					</a>
 					<br/>
-					<a href='https://www.linkedin.com/in/hunter-wallen'>
+					<a href='https://www.linkedin.com/in/hunter-wallen' target="_blank" >
 						<img src={LinkedIn} alt="LinkedIn" className='contactIcons' />
 					</a>
 					<br/>

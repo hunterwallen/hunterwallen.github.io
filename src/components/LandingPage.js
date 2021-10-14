@@ -83,14 +83,22 @@ export default function About(props) {
 								<img src={Gmail} alt="Gmail" className='landingPageContactIcons' />
 								</a>
 								<br/>
+<<<<<<< ghpages
 								<a href='https://github.com/hunterwallen' className='landingPageContactLink' >
 									<img src={Github} alt="GitHub" className='landingPageContactIcons' />
 								</a>
 								<br/>
 								<a href='https://www.linkedin.com/in/hunter-wallen' className='landingPageContactLink' >
-									<img src={LinkedIn} alt="LinkedIn" className='landingPageContactIcons' />
+=======
+								<a href='https://github.com/hunterwallen' target="_blank">
+									<img src={Github} alt="GitHub" className='landingPageContactIcons' />
 								</a>
 								<br/>
+								<a href='https://www.linkedin.com/in/hunter-wallen' target="_blank">
+>>>>>>> main
+									<img src={LinkedIn} alt="LinkedIn" className='landingPageContactIcons' />
+								</a>
+
 							</div>
 						</div>
 				</div>

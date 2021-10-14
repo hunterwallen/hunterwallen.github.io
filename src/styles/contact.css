@@ -47,6 +47,9 @@
   filter: drop-shadow(0 0 5px grey);
   min-width: 60vw;
   max-width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .formH1 {
   color: white;
@@ -57,11 +60,14 @@
   display: flex;
   flex-direction: column;
   color: white;
+  width: 80%;
+  max-width: 40em;
 }
 .emailContainer  h3 {
   color: rgb(29, 158, 170);
   margin: .5em auto;
   font-family: 'Ubuntu', sans-serif;
+
 }
 .emailContainer label {
   padding-bottom: .5em;
@@ -77,6 +83,7 @@
   width: 100%;
   box-sizing: border-box;
   font-family: 'Ubuntu', sans-serif;
+
 }
 .emailContainer textarea {
   height: 10em;
