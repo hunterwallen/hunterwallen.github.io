@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { useHistory, BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 // import Header from './components/Header'
@@ -17,20 +17,6 @@ function App() {
 
   const [location, setLocation] = useState('/')
 
-  useEffect(()=> {
-    const storedLocation = localStorage.getItem("location") || '/'
-    setLocation(storedLocation)
-    console.log(location);
-  }, [])
-
-  useEffect(()=> {
-    localStorage.setItem("location", location)
-    document.querySelector('.active').classList.remove('active')
-    document.getElementById(`${location}`).classList.add('active')
-    console.log(location);
-  }, [location])
-
-
   let changeActive = (event) => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
@@ -40,6 +26,24 @@ function App() {
       setLocation(event.target.id)
     }
   }
+
+  const onBackButtonEvent = (e) => {
+    console.log(e.target.location.pathname)
+    setLocation(e.target.location.pathname)
+  }
+
+  useEffect(() => {
+    setLocation(window.location.pathname)
+  },[])
+
+  useEffect(() => {
+    window.addEventListener('popstate', onBackButtonEvent)
+  }, [])
+
+  useEffect(()=> {
+    document.querySelector('.active').classList.remove('active')
+    document.getElementById(`${location}`).classList.add('active')
+  }, [location])
 
   return (
     <div className="App">
