@@ -8,6 +8,7 @@ import Reddit from './assets/Reddit.png'
 import SunnyShelter from './assets/SunnyShelter.png'
 import Modivcare from './assets/ModivcareApp.png'
 import JumpTheLine from './assets/JumpTheLine.png'
+import HelloAlice from './assets/HelloAlice.png'
 
 export default function About(props) {
 	return (
@@ -15,7 +16,20 @@ export default function About(props) {
   <ul class='projectsLinks'>
 		<li className="projectLink">
 			<div className="titleAndPicDiv">
-				<a href="https://play.google.com/store/apps/details?id=com.hunterwallen.reactnativefirebase" target='_blank' className="projectTitles">Modivcare
+				<a href="https://play.google.com/store/search?q=hello%20alice&c=apps&hl=en_US&gl=US" target='_blank' className="projectTitles">Hello Alice
+				<img src={HelloAlice} alt='Hello Alice' className="appPic" />
+				</a>
+			</div>
+			<div className="infoRepoDiv">
+				<p className="projectInfo">React Native Application built using Javascript, using the Context API for state management and integrating with GraphQL as well as REST architecture. Integrates OAuth2.0 level authentication to ensure bank level security. Hello Alice provides solutions and funding for small business owners with a focus on the new majority.</p>
+				<div className='doubleRepoDiv'>
+					<a href="https://helloalice.com/" className="gitRepoLinks">HelloAlice.com</a>
+				</div>
+			</div>
+		</li>
+		<li className="projectLink">
+			<div className="titleAndPicDiv">
+				<a href="https://play.google.com/store/apps/details?id=com.modivcareriderapp&hl=en_US&gl=US" target='_blank' className="projectTitles">Modivcare
 				<img src={Modivcare} alt='Modivcare' className="appPic" />
 				</a>
 			</div>
@@ -28,12 +42,12 @@ export default function About(props) {
 		</li>
 		<li className="projectLink">
 			<div className="titleAndPicDiv">
-				<a href="https://play.google.com/store/apps/details?id=com.hunterwallen.reactnativefirebase" target='_blank' className="projectTitles">Jump The Line
+				<a href="https://play.google.com/store/apps/details?id=com.jumptheline.app&hl=en_US&gl=US" target='_blank' className="projectTitles">Jump The Line
 				<img src={JumpTheLine} alt='Jump The Line' className="appPic" />
 				</a>
 			</div>
 			<div className="infoRepoDiv">
-				<p className="projectInfo">React Native Enterprise Application built in Javascript. Integrates multiple back-end API's and third party libraries to support consistent and reliable service. JumpTheLine is at the forefront of improving social engagements. Need to JumpTheLine and save time? We got you.</p>
+				<p className="projectInfo">React Native Application built in Javascript. Integrates multiple back-end API's and third party libraries to support consistent and reliable service. JumpTheLine is at the forefront of improving social engagements. Need to JumpTheLine and save time? We got you.</p>
 				<div className='doubleRepoDiv'>
 					<a href="https://gojumptheline.io/" className="gitRepoLinks">GoJumpTheLine.io</a>
 				</div>
