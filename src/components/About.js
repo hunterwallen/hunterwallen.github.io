@@ -1,6 +1,5 @@
 import React from "react";
 import Avatar from "./assets/avatar.jpg";
-import aboutStyles from '../styles/about.css'
 
 export default function About(props) {
 	return (
