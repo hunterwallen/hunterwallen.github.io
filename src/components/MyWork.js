@@ -18,7 +18,7 @@ export default function About(props) {
 			<div className="infoRepoDiv">
 				<p className="projectInfo">React Native Application built using Typescript, Context, Mapbox, Plotly and Turf.js. Integrates via BLE with an IoT methane measurement sensor to allow for complex data management, modeling and visualization.</p>
 				<div className='doubleRepoDiv'>
-					<a href="https://www.projectcanary.com/" className="gitRepoLinks">ProjectCanary.com</a>
+					<a href="https://www.projectcanary.com/" target='_blank' className="gitRepoLinks">ProjectCanary.com</a>
 				</div>
 			</div>
 		</li>
@@ -31,7 +31,7 @@ export default function About(props) {
 			<div className="infoRepoDiv">
 				<p className="projectInfo">React Native Application built using Javascript, using the Context API for state management and integrating with GraphQL as well as REST architecture. Integrates OAuth2.0 level authentication to ensure bank level security. Hello Alice provides solutions and funding for small business owners with a focus on the new majority.</p>
 				<div className='doubleRepoDiv'>
-					<a href="https://helloalice.com/" className="gitRepoLinks">HelloAlice.com</a>
+					<a href="https://helloalice.com/" target='_blank' className="gitRepoLinks">HelloAlice.com</a>
 				</div>
 			</div>
 		</li>
@@ -44,7 +44,7 @@ export default function About(props) {
 			<div className="infoRepoDiv">
 				<p className="projectInfo">React Native Enterprise Application built in Typescript. Integrates numerous back-end API's and microservices to support high volume usage and secure transmission of confidential data. Utilizes Redux for state management. Modivcare's flagship non-emergency medical transportation application.</p>
 				<div className='doubleRepoDiv'>
-					<a href="https://www.modivcare.com/" className="gitRepoLinks">Modivcare.com</a>
+					<a href="https://www.modivcare.com/" target='_blank' className="gitRepoLinks">Modivcare.com</a>
 				</div>
 			</div>
 		</li>
@@ -57,7 +57,7 @@ export default function About(props) {
 			<div className="infoRepoDiv">
 				<p className="projectInfo">React Native Application built in Javascript. Integrates multiple back-end API's and third party libraries to support consistent and reliable service. JumpTheLine is at the forefront of improving social engagements. Need to JumpTheLine and save time? We got you.</p>
 				<div className='doubleRepoDiv'>
-					<a href="https://gojumptheline.io/" className="gitRepoLinks">GoJumpTheLine.io</a>
+					<a href="https://gojumptheline.io/" target='_blank' className="gitRepoLinks">GoJumpTheLine.io</a>
 				</div>
 			</div>
 		</li>
