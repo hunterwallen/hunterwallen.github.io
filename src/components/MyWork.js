@@ -1,4 +1,5 @@
 import React from 'react'
+import projectStyles from '../styles/projects.css'
 import EmissionResponder from './assets/EmissionResponder.png'
 import Modivcare from './assets/ModivcareApp.png'
 import JumpTheLine from './assets/JumpTheLine.png'
