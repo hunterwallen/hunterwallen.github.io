@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "hunters-portfolio",
+    "name": "Hunter Wallen",
     "slug": "hunters-portfolio",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,9 +8,11 @@
     "scheme": "huntersportfolio",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.hunterwallen.portfolio"
     },
     "android": {
+      "package": "com.hunterwallen.portfolio",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",

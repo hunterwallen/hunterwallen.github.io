@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /Users/hunter/PersonalDev/hunterwallen.github.io/)",
+      "Read(//Users/hunter/PersonalDev/hunterwallen.github.io/**)"
+    ]
+  }
+}
