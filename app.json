@@ -36,6 +36,12 @@
             "imageWidth": 76
           }
         }
+      ],
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow Hunter Wallen to save Hunter's contact info to your address book."
+        }
       ]
     ],
     "experiments": {

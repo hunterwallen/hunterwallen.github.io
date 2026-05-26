@@ -3,27 +3,25 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router'
 import { Tabs } from 'expo-router/js-tabs'
 import { SymbolView } from 'expo-symbols'
 import { useEffect, useState } from 'react'
-import {
-	ColorValue,
-	Image as RNImage,
-	useColorScheme,
-	View,
-} from 'react-native'
+import { ColorValue, Image as RNImage, View } from 'react-native'
 
 import { LoadingOverlay } from '@/components/loading-overlay'
 import { ToastProvider } from '@/components/toast'
 import { Colors } from '@/constants/theme'
+import { ThemeModeProvider } from '@/contexts/theme-mode'
 import {
 	featuredTech,
 	projects,
 	socials,
 	techStack,
 } from '@/data/portfolio'
+import { useColorScheme } from '@/hooks/use-color-scheme'
 
 const tabIcons = {
 	index: { ios: 'house.fill', android: 'home', web: 'home' },
 	portfolio: { ios: 'briefcase.fill', android: 'work', web: 'work' },
 	about: { ios: 'person.fill', android: 'person', web: 'person' },
+	settings: { ios: 'gearshape.fill', android: 'settings', web: 'settings' },
 } as const
 
 type TabName = keyof typeof tabIcons
@@ -71,6 +69,14 @@ function resolveUri(asset: unknown): string | null {
 }
 
 export default function RootLayout() {
+	return (
+		<ThemeModeProvider>
+			<RootContent />
+		</ThemeModeProvider>
+	)
+}
+
+function RootContent() {
 	const scheme = useColorScheme()
 	const isDark = scheme === 'dark'
 	const colors = Colors[isDark ? 'dark' : 'light']
@@ -105,7 +111,7 @@ export default function RootLayout() {
 								.catch(() => null)
 								.then(bumpProgress),
 						),
-				  )
+					)
 
 		const minDelay = new Promise<void>(resolve =>
 			setTimeout(
@@ -131,52 +137,61 @@ export default function RootLayout() {
 			<ToastProvider>
 				<View style={{ flex: 1 }}>
 					<Tabs
-					screenOptions={{
-						headerShown: false,
-						tabBarActiveTintColor: '#3c87f7',
-						tabBarInactiveTintColor: colors.textSecondary,
-						tabBarStyle: {
-							backgroundColor: colors.background,
-							borderTopColor: colors.backgroundElement,
-						},
-					}}
-				>
-					<Tabs.Screen
-						name="index"
-						options={{
-							title: 'Home',
-							tabBarIcon: ({ color, size }) => (
-								<TabIcon name="index" color={color} size={size} />
-							),
+						screenOptions={{
+							headerShown: false,
+							tabBarActiveTintColor: '#3c87f7',
+							tabBarInactiveTintColor: colors.textSecondary,
+							tabBarStyle: {
+								backgroundColor: colors.background,
+								borderTopColor: colors.backgroundElement,
+							},
 						}}
-					/>
-					<Tabs.Screen
-						name="portfolio"
-						options={{
-							title: 'Portfolio',
-							tabBarIcon: ({ color, size }) => (
-								<TabIcon name="portfolio" color={color} size={size} />
-							),
-						}}
-					/>
-					<Tabs.Screen
-						name="about"
-						options={{
-							title: 'About',
-							tabBarIcon: ({ color, size }) => (
-								<TabIcon name="about" color={color} size={size} />
-							),
-						}}
-					/>
-				</Tabs>
-				{overlayMounted && (
-					<LoadingOverlay
-						progress={progress}
-						visible={!contentReady}
-						onDismiss={() => setOverlayMounted(false)}
-					/>
-				)}
-			</View>
+					>
+						<Tabs.Screen
+							name="index"
+							options={{
+								title: 'Home',
+								tabBarIcon: ({ color, size }) => (
+									<TabIcon name="index" color={color} size={size} />
+								),
+							}}
+						/>
+						<Tabs.Screen
+							name="portfolio"
+							options={{
+								title: 'Portfolio',
+								tabBarIcon: ({ color, size }) => (
+									<TabIcon name="portfolio" color={color} size={size} />
+								),
+							}}
+						/>
+						<Tabs.Screen
+							name="about"
+							options={{
+								title: 'About',
+								tabBarIcon: ({ color, size }) => (
+									<TabIcon name="about" color={color} size={size} />
+								),
+							}}
+						/>
+						<Tabs.Screen
+							name="settings"
+							options={{
+								title: 'Settings',
+								tabBarIcon: ({ color, size }) => (
+									<TabIcon name="settings" color={color} size={size} />
+								),
+							}}
+						/>
+					</Tabs>
+					{overlayMounted && (
+						<LoadingOverlay
+							progress={progress}
+							visible={!contentReady}
+							onDismiss={() => setOverlayMounted(false)}
+						/>
+					)}
+				</View>
 			</ToastProvider>
 		</ThemeProvider>
 	)
