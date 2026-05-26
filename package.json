@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
-    "gh-pages": "^6.3.0",
     "typescript": "~6.0.3"
   },
   "scripts": {
@@ -42,8 +41,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "build:web": "expo export --platform web && node ./scripts/postbuild-web.mjs",
-    "deploy:web": "npm run build:web && gh-pages -d dist -r https://github.com/hunterwallen/hunterwallen.github.io.git -b gh-pages -t true -m \"Deploy from hunters-portfolio\""
+    "build:web": "expo export --platform web && node ./scripts/postbuild-web.mjs"
   },
   "private": true
 }

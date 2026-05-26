@@ -1,0 +1,15 @@
+[build]
+  command = "npm run build:web"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA fallback for any path that doesn't match a generated file.
+# Folderified routes (/portfolio/, /about/, /settings/) are served natively;
+# this rule only fires for truly unknown URLs and lets the client-side
+# router render the +not-found screen with the original URL intact.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

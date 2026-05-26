@@ -1,5 +1,6 @@
 import { Image as ExpoImage } from 'expo-image'
 import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router'
+import Head from 'expo-router/head'
 import { Tabs } from 'expo-router/js-tabs'
 import { SymbolView } from 'expo-symbols'
 import { useEffect, useState } from 'react'
@@ -134,11 +135,15 @@ function RootContent() {
 
 	return (
 		<ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
+			<Head>
+				<title>HunterWallen.com</title>
+			</Head>
 			<ToastProvider>
 				<View style={{ flex: 1 }}>
 					<Tabs
 						screenOptions={{
 							headerShown: false,
+							title: 'HunterWallen.com',
 							tabBarActiveTintColor: '#3c87f7',
 							tabBarInactiveTintColor: colors.textSecondary,
 							tabBarStyle: {
@@ -150,7 +155,7 @@ function RootContent() {
 						<Tabs.Screen
 							name="index"
 							options={{
-								title: 'Home',
+								tabBarLabel: 'Home',
 								tabBarIcon: ({ color, size }) => (
 									<TabIcon name="index" color={color} size={size} />
 								),
@@ -159,7 +164,7 @@ function RootContent() {
 						<Tabs.Screen
 							name="portfolio"
 							options={{
-								title: 'Portfolio',
+								tabBarLabel: 'Portfolio',
 								tabBarIcon: ({ color, size }) => (
 									<TabIcon name="portfolio" color={color} size={size} />
 								),
@@ -168,7 +173,7 @@ function RootContent() {
 						<Tabs.Screen
 							name="about"
 							options={{
-								title: 'About',
+								tabBarLabel: 'About',
 								tabBarIcon: ({ color, size }) => (
 									<TabIcon name="about" color={color} size={size} />
 								),
@@ -177,7 +182,7 @@ function RootContent() {
 						<Tabs.Screen
 							name="settings"
 							options={{
-								title: 'Settings',
+								tabBarLabel: 'Settings',
 								tabBarIcon: ({ color, size }) => (
 									<TabIcon name="settings" color={color} size={size} />
 								),
