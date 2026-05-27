@@ -18,6 +18,15 @@ expo-env.d.ts
 *.key
 *.mobileprovision
 
+# EAS
+credentials.json
+*.apk
+*.aab
+*.ipa
+eas-build-*.log
+google-services.json
+GoogleService-Info.plist
+
 # Metro
 .metro-health-check*
 

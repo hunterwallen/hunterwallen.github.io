@@ -2,11 +2,14 @@ import { Image as ExpoImage } from 'expo-image'
 import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router'
 import Head from 'expo-router/head'
 import { Tabs } from 'expo-router/js-tabs'
+import * as SplashScreen from 'expo-splash-screen'
 import { SymbolView } from 'expo-symbols'
 import { useEffect, useState } from 'react'
 import { ColorValue, Image as RNImage, View } from 'react-native'
 
 import { LoadingOverlay } from '@/components/loading-overlay'
+
+SplashScreen.preventAutoHideAsync().catch(() => {})
 import { ToastProvider } from '@/components/toast'
 import { Colors } from '@/constants/theme'
 import { ThemeModeProvider } from '@/contexts/theme-mode'
@@ -186,6 +189,20 @@ function RootContent() {
 								tabBarIcon: ({ color, size }) => (
 									<TabIcon name="settings" color={color} size={size} />
 								),
+							}}
+						/>
+						<Tabs.Screen
+							name="privacy"
+							options={{
+								href: null,
+								tabBarStyle: { display: 'none' },
+							}}
+						/>
+						<Tabs.Screen
+							name="terms"
+							options={{
+								href: null,
+								tabBarStyle: { display: 'none' },
 							}}
 						/>
 					</Tabs>

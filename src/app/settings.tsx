@@ -1,5 +1,6 @@
 import Constants from 'expo-constants'
-import * as Contacts from 'expo-contacts'
+import * as Contacts from 'expo-contacts/legacy'
+import { useRouter } from 'expo-router'
 import { SymbolView } from 'expo-symbols'
 import { useState } from 'react'
 import {
@@ -31,6 +32,7 @@ const PORTFOLIO_URL = 'https://hunterwallen.com'
 export default function SettingsScreen() {
 	const theme = useTheme()
 	const insets = useSafeAreaInsets()
+	const router = useRouter()
 	const { mode, setMode } = useThemeMode()
 	const { showToast } = useToast()
 	const [learnMoreOpen, setLearnMoreOpen] = useState(false)
@@ -46,11 +48,23 @@ export default function SettingsScreen() {
 				showToast('Contacts permission denied.')
 				return
 			}
-			await Contacts.Contact.presentCreateForm({
-				givenName: 'Hunter',
-				familyName: 'Wallen',
+			// Using the legacy API: the new class-based `Contact.presentCreateForm`
+			// has a bug on Android — it omits `Intents.Insert.NAME` from the
+			// ACTION_INSERT extras, so the contact form opens with an empty name
+			// field. The legacy `presentFormAsync` correctly sets that extra.
+			const contact: Contacts.Contact = {
+				contactType: Contacts.ContactTypes.Person,
+				name: 'Hunter Wallen',
+				firstName: 'Hunter',
+				lastName: 'Wallen',
 				jobTitle: 'Full-Stack Software Engineer',
-				emails: [{ address: 'hunterwallen67@gmail.com', label: 'work' }],
+				emails: [
+					{
+						email: 'hunterwallen67@gmail.com',
+						label: 'work',
+						isPrimary: true,
+					},
+				],
 				urlAddresses: [
 					{ url: 'https://hunterwallen.com', label: 'portfolio' },
 					{ url: 'https://github.com/hunterwallen', label: 'github' },
@@ -59,7 +73,8 @@ export default function SettingsScreen() {
 						label: 'linkedin',
 					},
 				],
-			})
+			}
+			await Contacts.presentFormAsync(null, contact)
 		} catch {
 			showToast("Couldn't save contact. Try again.")
 		}
@@ -184,6 +199,20 @@ export default function SettingsScreen() {
 							label="Learn more about this app"
 							helper="Stack, libraries, and features."
 							onPress={() => setLearnMoreOpen(true)}
+						/>
+						<Divider color={theme.backgroundSelected as string} />
+						<Row
+							icon="lock.shield.fill"
+							androidIcon="privacy_tip"
+							label="Privacy Policy"
+							onPress={() => router.push('/privacy')}
+						/>
+						<Divider color={theme.backgroundSelected as string} />
+						<Row
+							icon="doc.text.fill"
+							androidIcon="description"
+							label="Terms and Conditions"
+							onPress={() => router.push('/terms')}
 						/>
 						<Divider color={theme.backgroundSelected as string} />
 						<View style={styles.aboutRow}>

@@ -1,4 +1,5 @@
 import { Image } from 'expo-image'
+import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 import { Modal, StyleSheet, View } from 'react-native'
 import Animated, {
@@ -28,6 +29,16 @@ export function LoadingOverlay({ progress, visible, onDismiss }: Props) {
 	const rotation = useSharedValue(0)
 	const pulse = useSharedValue(1)
 	const progressWidth = useSharedValue(0)
+
+	useEffect(() => {
+		// Now that the overlay is mounted, drop the bridging splashes.
+		// Native: native splash screen (kept visible via preventAutoHideAsync).
+		// Web: the #initial-loading <div> rendered into the static HTML.
+		SplashScreen.hideAsync().catch(() => {})
+		if (typeof document !== 'undefined') {
+			document.getElementById('initial-loading')?.remove()
+		}
+	}, [])
 
 	useEffect(() => {
 		rotation.value = withRepeat(

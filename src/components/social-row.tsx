@@ -53,7 +53,7 @@ export function SocialRow({ size = 56 }: Props) {
 				>
 					<Image
 						source={social.image}
-						style={{ width: size, height: size }}
+						style={{ width: '100%', height: '100%' }}
 						contentFit="contain"
 					/>
 				</Pressable>
@@ -68,9 +68,14 @@ const styles = StyleSheet.create({
 		gap: Spacing.four,
 		justifyContent: 'center',
 		alignItems: 'center',
+		width: '100%',
+		height: 100,
+		maxWidth: 275,
 	},
 	iconWrapper: {
 		padding: Spacing.one,
+		flex: 1,
+		height: '100%',
 	},
 	pressed: {
 		opacity: 0.6,
