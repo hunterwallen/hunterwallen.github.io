@@ -63,3 +63,14 @@ export const Spacing = {
 
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
 export const MaxContentWidth = 800;
+
+/**
+ * react-native-web only: emits CSS transitions for smooth hover/press states.
+ * No-op on native — Pressable state changes are instant there, which matches
+ * platform conventions.
+ */
+export const InteractiveTransition = {
+  transitionProperty: 'opacity, background-color, color, border-color, transform',
+  transitionDuration: '180ms',
+  transitionTimingFunction: 'ease',
+} as const;

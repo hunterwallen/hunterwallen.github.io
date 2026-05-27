@@ -1,17 +1,26 @@
+import * as Haptics from 'expo-haptics'
 import { Image as ExpoImage } from 'expo-image'
 import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router'
 import Head from 'expo-router/head'
 import { Tabs } from 'expo-router/js-tabs'
+import type { BottomTabBarButtonProps } from 'expo-router/js-tabs'
 import * as SplashScreen from 'expo-splash-screen'
 import { SymbolView } from 'expo-symbols'
 import { useEffect, useState } from 'react'
-import { ColorValue, Image as RNImage, View } from 'react-native'
+import {
+	ColorValue,
+	Image as RNImage,
+	Pressable,
+	View,
+	ViewStyle,
+} from 'react-native'
 
 import { LoadingOverlay } from '@/components/loading-overlay'
 
 SplashScreen.preventAutoHideAsync().catch(() => {})
 import { ToastProvider } from '@/components/toast'
-import { Colors } from '@/constants/theme'
+import { Colors, InteractiveTransition } from '@/constants/theme'
+import { AppReadyProvider } from '@/contexts/app-ready'
 import { ThemeModeProvider } from '@/contexts/theme-mode'
 import {
 	featuredTech,
@@ -25,7 +34,6 @@ const tabIcons = {
 	index: { ios: 'house.fill', android: 'home', web: 'home' },
 	portfolio: { ios: 'briefcase.fill', android: 'work', web: 'work' },
 	about: { ios: 'person.fill', android: 'person', web: 'person' },
-	settings: { ios: 'gearshape.fill', android: 'settings', web: 'settings' },
 } as const
 
 type TabName = keyof typeof tabIcons
@@ -46,6 +54,28 @@ function TabIcon({
 			tintColor={color as string}
 			resizeMode="scaleAspectFit"
 		/>
+	)
+}
+
+type PressableState = { pressed: boolean; hovered?: boolean }
+const interactiveBase = InteractiveTransition as unknown as ViewStyle
+
+function AnimatedTabBarButton(props: BottomTabBarButtonProps) {
+	const { children, style, ...rest } = props as BottomTabBarButtonProps & {
+		[k: string]: unknown
+	}
+	return (
+		<Pressable
+			{...(rest as object)}
+			style={({ pressed, hovered }: PressableState) => [
+				style,
+				interactiveBase,
+				hovered && { opacity: 0.7 },
+				pressed && { opacity: 0.5 },
+			]}
+		>
+			{children}
+		</Pressable>
 	)
 }
 
@@ -142,8 +172,9 @@ function RootContent() {
 				<title>HunterWallen.com</title>
 			</Head>
 			<ToastProvider>
-				<View style={{ flex: 1 }}>
-					<Tabs
+				<AppReadyProvider value={contentReady}>
+					<View style={{ flex: 1 }}>
+						<Tabs
 						screenOptions={{
 							headerShown: false,
 							title: 'HunterWallen.com',
@@ -152,6 +183,12 @@ function RootContent() {
 							tabBarStyle: {
 								backgroundColor: colors.background,
 								borderTopColor: colors.backgroundElement,
+							},
+							tabBarButton: props => <AnimatedTabBarButton {...props} />,
+						}}
+						screenListeners={{
+							tabPress: () => {
+								Haptics.selectionAsync().catch(() => {})
 							},
 						}}
 					>
@@ -185,10 +222,8 @@ function RootContent() {
 						<Tabs.Screen
 							name="settings"
 							options={{
-								tabBarLabel: 'Settings',
-								tabBarIcon: ({ color, size }) => (
-									<TabIcon name="settings" color={color} size={size} />
-								),
+								href: null,
+								tabBarStyle: { display: 'none' },
 							}}
 						/>
 						<Tabs.Screen
@@ -214,6 +249,7 @@ function RootContent() {
 						/>
 					)}
 				</View>
+				</AppReadyProvider>
 			</ToastProvider>
 		</ThemeProvider>
 	)

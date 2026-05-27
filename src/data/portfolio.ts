@@ -3,7 +3,11 @@ import { ImageSourcePropType } from 'react-native'
 export type Project = {
 	id: string
 	title: string
-	description: string
+	role: string
+	context?: string
+	contributions: string[]
+	stack: string[]
+	outcome?: string
 	url: string
 	urlLabel: string
 	image: ImageSourcePropType
@@ -21,8 +25,27 @@ export const projects: Project[] = [
 	{
 		id: 'villagemd',
 		title: 'VillageMD',
-		description:
-			'The patient-facing mobile app for VillageMD primary care — scheduling, messaging, telehealth visits, records, and billing in one cross-platform React Native codebase.',
+		role: 'Lead React Native Engineer',
+		context: 'Patient-facing app for VillageMD primary care.',
+		contributions: [
+			'Architected and led the iterative migration of two legacy iOS and Android apps onto a single modern React Native codebase without losing users on the other side.',
+			'Designed complex third-party telehealth and EMR native SDK integrations via TurboModule bridges in Swift, Kotlin, Objective-C, and Java.',
+			'Built and maintained a centralized shared feature library and themed component library used across both the VillageMD and CityMD apps, with state shared across host and library boundaries.',
+			'Migrated CI to GitHub Actions and the deployment pipeline to Firebase, with AI-augmented optimizations to the native build flow.',
+			'Led code reviews, pair programming, and mentoring for two five-person mobile teams.',
+		],
+		stack: [
+			'React Native',
+			'TypeScript',
+			'Swift',
+			'Kotlin',
+			'Obj-C',
+			'Java',
+			'TurboModules',
+			'GitHub Actions',
+			'Firebase',
+		],
+		outcome: 'Build times cut from 45 minutes to under 15.',
 		url: 'https://www.villagemd.com/',
 		urlLabel: 'VillageMD.com',
 		image: require('@/assets/images/portfolio/VMD.png'),
@@ -33,8 +56,25 @@ export const projects: Project[] = [
 	{
 		id: 'scmd',
 		title: 'CityMD',
-		description:
-			'The patient-facing mobile app for Summit Health primary care and CityMD urgent care — scheduling, messaging, telehealth visits, records, and billing in one cross-platform React Native codebase.',
+		role: 'Lead React Native Engineer',
+		context:
+			'Patient-facing app for Summit Health primary care and CityMD urgent care.',
+		contributions: [
+			'Modernized a legacy React Native + Expo codebase onto the New Architecture with TurboModule-enabled native modules.',
+			'Migrated CI to GitHub Actions and the release pipeline to Firebase distribution.',
+			'Used AI-assisted workflows to redesign the native build flow.',
+			'Shared a centralized feature library and themed component library with the VillageMD app, with state shared across host and library layers.',
+		],
+		stack: [
+			'React Native',
+			'Expo',
+			'New Architecture',
+			'TurboModules',
+			'TypeScript',
+			'GitHub Actions',
+			'Firebase',
+		],
+		outcome: 'Build times cut in half via AI-augmented CI.',
 		url: 'https://www.citymd.com/',
 		urlLabel: 'CityMD.com',
 		image: require('@/assets/images/portfolio/CityMD.png'),
@@ -45,8 +85,22 @@ export const projects: Project[] = [
 	{
 		id: 'project-canary',
 		title: 'Canary Recon',
-		description:
-			'React Native application built with TypeScript, Context, Mapbox, Plotly, and Turf.js. Integrates via BLE with an IoT methane measurement sensor to allow for complex data management, modeling, and visualization.',
+		role: 'Senior React Native Engineer',
+		context: 'Field tool for an IoT methane and ethane laser spectrometer.',
+		contributions: [
+			'Architected and built a highly technical React Native application integrating with a BLE-enabled IoT laser spectrometer for live emission readings.',
+			'Optimized data processing to handle thousands of points per minute over BLE without UI lag.',
+			'Built complex Mapbox, Turf.js, and Plotly integrations for performant large-scale field data visualization.',
+		],
+		stack: [
+			'React Native',
+			'TypeScript',
+			'BLE',
+			'Mapbox',
+			'Turf.js',
+			'Plotly',
+			'Context API',
+		],
 		url: 'https://www.projectcanary.com/',
 		urlLabel: 'ProjectCanary.com',
 		image: require('@/assets/images/portfolio/EmissionResponder.png'),
@@ -57,8 +111,19 @@ export const projects: Project[] = [
 	{
 		id: 'hello-alice',
 		title: 'Hello Alice',
-		description:
-			'React Native application built with JavaScript, using the Context API for state management and integrating with GraphQL as well as REST architecture. Integrates OAuth 2.0 authentication for bank-level security. Hello Alice provides solutions and funding for small business owners with a focus on the new majority.',
+		role: 'React Native Engineer',
+		context: 'Funding and resources for small business owners.',
+		contributions: [
+			'Architected and implemented digital authentication integration with a large financial institution, including OAuth 2.0 flows meeting bank-level security requirements.',
+		],
+		stack: [
+			'React Native',
+			'JavaScript',
+			'GraphQL',
+			'REST',
+			'OAuth 2.0',
+			'Context API',
+		],
 		url: 'https://helloalice.com/',
 		urlLabel: 'HelloAlice.com',
 		image: require('@/assets/images/portfolio/HelloAlice.png'),
@@ -66,8 +131,13 @@ export const projects: Project[] = [
 	{
 		id: 'modivcare',
 		title: 'Modivcare',
-		description:
-			"React Native enterprise application built in TypeScript. Integrates numerous back-end APIs and microservices to support high-volume usage and secure transmission of confidential data. Utilizes Redux for state management. Modivcare's flagship non-emergency medical transportation application.",
+		role: 'Full-Stack Software Engineer',
+		context: "Modivcare's flagship non-emergency medical transportation app.",
+		contributions: [
+			'Spearheaded a shared React and React Native component library used across multiple web and mobile applications in the Modivcare suite.',
+			'Integrated multiple back-end APIs and microservices for high-volume usage and secure transmission of confidential patient data.',
+		],
+		stack: ['React Native', 'React', 'TypeScript', 'Redux', 'REST'],
 		url: 'https://www.modivcare.com/',
 		urlLabel: 'Modivcare.com',
 		image: require('@/assets/images/portfolio/ModivcareApp.png'),
@@ -78,8 +148,14 @@ export const projects: Project[] = [
 	{
 		id: 'jump-the-line',
 		title: 'Jump The Line',
-		description:
-			'React Native application built in JavaScript. Integrates multiple back-end APIs and third-party libraries to support consistent and reliable service. JumpTheLine is at the forefront of improving social engagements. Need to JumpTheLine and save time? We got you.',
+		role: 'Founding Mobile Engineer',
+		context: 'Social engagement app for skipping lines at venues.',
+		contributions: [
+			'One of two founding mobile engineers; built the foundational architecture from zero.',
+			'Built state management, location permissions, push notification utilities, and the API integration layer.',
+			'Designed and shipped a buttery-smooth UI that made user interactions feel seamless.',
+		],
+		stack: ['React Native', 'JavaScript', 'Push Notifications', 'Geolocation'],
 		url: 'https://gojumptheline.io/',
 		urlLabel: 'GoJumpTheLine.io',
 		image: require('@/assets/images/portfolio/JumpTheLine.png'),

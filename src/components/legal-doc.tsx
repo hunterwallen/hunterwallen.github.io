@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
+import { StackHeader } from '@/components/stack-header'
 import { ThemedText } from '@/components/themed-text'
 import { MaxContentWidth, Spacing } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
@@ -23,33 +24,36 @@ export function LegalLayout({
 	const insets = useSafeAreaInsets()
 
 	return (
-		<ScrollView
-			style={[styles.scroll, { backgroundColor: theme.background }]}
-			contentContainerStyle={[
-				styles.contentContainer,
-				{
-					paddingTop: insets.top + Spacing.four,
-					paddingLeft: insets.left + Spacing.four,
-					paddingRight: insets.right + Spacing.four,
-					paddingBottom: insets.bottom + Spacing.six,
-				},
-			]}
-		>
-			<View style={styles.inner}>
-				<ThemedText type="subtitle" style={styles.title}>
-					{title}
-				</ThemedText>
-				<ThemedText
-					type="small"
-					themeColor="textSecondary"
-					style={styles.lastUpdated}
-				>
-					Last updated: {lastUpdated}
-				</ThemedText>
-				{intro && <View style={styles.introBlock}>{intro}</View>}
-				<View style={styles.sectionsWrapper}>{children}</View>
-			</View>
-		</ScrollView>
+		<View style={[styles.root, { backgroundColor: theme.background }]}>
+			<StackHeader title={title} backHref="/settings" />
+			<ScrollView
+				style={styles.scroll}
+				contentContainerStyle={[
+					styles.contentContainer,
+					{
+						paddingTop: Spacing.four,
+						paddingLeft: insets.left + Spacing.four,
+						paddingRight: insets.right + Spacing.four,
+						paddingBottom: insets.bottom + Spacing.six,
+					},
+				]}
+			>
+				<View style={styles.inner}>
+					<ThemedText type="subtitle" style={styles.title}>
+						{title}
+					</ThemedText>
+					<ThemedText
+						type="small"
+						themeColor="textSecondary"
+						style={styles.lastUpdated}
+					>
+						Last updated: {lastUpdated}
+					</ThemedText>
+					{intro && <View style={styles.introBlock}>{intro}</View>}
+					<View style={styles.sectionsWrapper}>{children}</View>
+				</View>
+			</ScrollView>
+		</View>
 	)
 }
 
@@ -118,6 +122,7 @@ export function LegalContact({
 }
 
 const styles = StyleSheet.create({
+	root: { flex: 1 },
 	scroll: { flex: 1 },
 	contentContainer: {
 		flexDirection: 'row',

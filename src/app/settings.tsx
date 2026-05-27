@@ -1,5 +1,4 @@
 import Constants from 'expo-constants'
-import * as Contacts from 'expo-contacts/legacy'
 import { useRouter } from 'expo-router'
 import { SymbolView } from 'expo-symbols'
 import { useState } from 'react'
@@ -8,18 +7,25 @@ import {
 	Platform,
 	Pressable,
 	ScrollView,
-	Share,
 	StyleSheet,
 	View,
+	ViewStyle,
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
+import { StackHeader } from '@/components/stack-header'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
-import { useToast } from '@/components/toast'
-import { MaxContentWidth, Spacing } from '@/constants/theme'
+import {
+	InteractiveTransition,
+	MaxContentWidth,
+	Spacing,
+} from '@/constants/theme'
 import { ThemeMode, useThemeMode } from '@/contexts/theme-mode'
 import { useTheme } from '@/hooks/use-theme'
+
+type PressableState = { pressed: boolean; hovered?: boolean }
+const interactiveBase = InteractiveTransition as unknown as ViewStyle
 
 const THEME_OPTIONS: { value: ThemeMode; label: string; sf: string }[] = [
 	{ value: 'system', label: 'System', sf: 'circle.lefthalf.filled' },
@@ -27,70 +33,12 @@ const THEME_OPTIONS: { value: ThemeMode; label: string; sf: string }[] = [
 	{ value: 'dark', label: 'Dark', sf: 'moon.fill' },
 ]
 
-const PORTFOLIO_URL = 'https://hunterwallen.com'
-
 export default function SettingsScreen() {
 	const theme = useTheme()
 	const insets = useSafeAreaInsets()
 	const router = useRouter()
 	const { mode, setMode } = useThemeMode()
-	const { showToast } = useToast()
 	const [learnMoreOpen, setLearnMoreOpen] = useState(false)
-
-	const saveContact = async () => {
-		if (Platform.OS === 'web') {
-			showToast('Save to Contacts is only available in the mobile app.')
-			return
-		}
-		try {
-			const permission = await Contacts.requestPermissionsAsync()
-			if (permission.status !== 'granted') {
-				showToast('Contacts permission denied.')
-				return
-			}
-			// Using the legacy API: the new class-based `Contact.presentCreateForm`
-			// has a bug on Android — it omits `Intents.Insert.NAME` from the
-			// ACTION_INSERT extras, so the contact form opens with an empty name
-			// field. The legacy `presentFormAsync` correctly sets that extra.
-			const contact: Contacts.Contact = {
-				contactType: Contacts.ContactTypes.Person,
-				name: 'Hunter Wallen',
-				firstName: 'Hunter',
-				lastName: 'Wallen',
-				jobTitle: 'Full-Stack Software Engineer',
-				emails: [
-					{
-						email: 'hunterwallen67@gmail.com',
-						label: 'work',
-						isPrimary: true,
-					},
-				],
-				urlAddresses: [
-					{ url: 'https://hunterwallen.com', label: 'portfolio' },
-					{ url: 'https://github.com/hunterwallen', label: 'github' },
-					{
-						url: 'https://www.linkedin.com/in/hunter-wallen',
-						label: 'linkedin',
-					},
-				],
-			}
-			await Contacts.presentFormAsync(null, contact)
-		} catch {
-			showToast("Couldn't save contact. Try again.")
-		}
-	}
-
-	const sharePortfolio = async () => {
-		try {
-			await Share.share({
-				title: 'Hunter Wallen — Portfolio',
-				message: `Check out Hunter Wallen's portfolio: ${PORTFOLIO_URL}`,
-				url: PORTFOLIO_URL,
-			})
-		} catch {
-			showToast("Couldn't open the share sheet.")
-		}
-	}
 
 	const appVersion =
 		Constants.expoConfig?.version ??
@@ -98,145 +46,130 @@ export default function SettingsScreen() {
 		'1.0.0'
 
 	return (
-		<ScrollView
-			style={[styles.scroll, { backgroundColor: theme.background }]}
-			contentContainerStyle={[
-				styles.contentContainer,
-				{
-					paddingTop: insets.top + Spacing.four,
-					paddingLeft: insets.left + Spacing.four,
-					paddingRight: insets.right + Spacing.four,
-				},
-			]}
-		>
-			<View style={styles.inner}>
-				<ThemedText type="subtitle" style={styles.title}>
-					Settings
-				</ThemedText>
-
-				<Section title="APPEARANCE">
-					<ThemedView type="backgroundElement" style={styles.card}>
-						<View style={styles.segmentRow}>
-							{THEME_OPTIONS.map(option => {
-								const selected = option.value === mode
-								return (
-									<Pressable
-										key={option.value}
-										accessibilityRole="button"
-										accessibilityState={{ selected }}
-										accessibilityLabel={`${option.label} theme`}
-										onPress={() => setMode(option.value)}
-										style={({ pressed }) => [
-											styles.segment,
-											selected && {
-												backgroundColor: theme.backgroundSelected,
-											},
-											pressed && styles.pressed,
-										]}
-									>
-										<SymbolView
-											name={
-												{
-													ios: option.sf,
-													android:
-														option.value === 'system'
-															? 'brightness_medium'
-															: option.value === 'light'
-																? 'light_mode'
-																: 'dark_mode',
-													web:
-														option.value === 'system'
-															? 'brightness_medium'
-															: option.value === 'light'
-																? 'light_mode'
-																: 'dark_mode',
-												} as React.ComponentProps<typeof SymbolView>['name']
-											}
-											size={18}
-											tintColor={
-												selected
-													? (theme.text as string)
-													: (theme.textSecondary as string)
-											}
-										/>
-										<ThemedText
-											type="smallBold"
-											themeColor={selected ? 'text' : 'textSecondary'}
+		<View style={[styles.root, { backgroundColor: theme.background }]}>
+			<StackHeader title="Settings" />
+			<ScrollView
+				style={styles.scroll}
+				contentContainerStyle={[
+					styles.contentContainer,
+					{
+						paddingTop: Spacing.four,
+						paddingLeft: insets.left + Spacing.four,
+						paddingRight: insets.right + Spacing.four,
+					},
+				]}
+			>
+				<View style={styles.inner}>
+					<Section title="APPEARANCE">
+						<ThemedView type="backgroundElement" style={styles.card}>
+							<View style={styles.segmentRow}>
+								{THEME_OPTIONS.map(option => {
+									const selected = option.value === mode
+									return (
+										<Pressable
+											key={option.value}
+											accessibilityRole="button"
+											accessibilityState={{ selected }}
+											accessibilityLabel={`${option.label} theme`}
+											onPress={() => setMode(option.value)}
+											style={({ pressed, hovered }: PressableState) => [
+												styles.segment,
+												selected && {
+													backgroundColor: theme.backgroundSelected,
+												},
+												!selected &&
+													hovered && {
+														backgroundColor: theme.backgroundSelected,
+														opacity: 0.6,
+													},
+												pressed && styles.pressed,
+											]}
 										>
-											{option.label}
-										</ThemedText>
-									</Pressable>
-								)
-							})}
-						</View>
-					</ThemedView>
-				</Section>
+											<SymbolView
+												name={
+													{
+														ios: option.sf,
+														android:
+															option.value === 'system'
+																? 'brightness_medium'
+																: option.value === 'light'
+																	? 'light_mode'
+																	: 'dark_mode',
+														web:
+															option.value === 'system'
+																? 'brightness_medium'
+																: option.value === 'light'
+																	? 'light_mode'
+																	: 'dark_mode',
+													} as React.ComponentProps<typeof SymbolView>['name']
+												}
+												size={18}
+												tintColor={
+													selected
+														? (theme.text as string)
+														: (theme.textSecondary as string)
+												}
+											/>
+											<ThemedText
+												type="smallBold"
+												themeColor={selected ? 'text' : 'textSecondary'}
+											>
+												{option.label}
+											</ThemedText>
+										</Pressable>
+									)
+								})}
+							</View>
+						</ThemedView>
+					</Section>
 
-				<Section title="CONNECT">
-					<ThemedView type="backgroundElement" style={styles.card}>
-						<Row
-							icon="person.crop.circle.badge.plus"
-							androidIcon="contact_page"
-							label="Save my contact info"
-							helper="Adds Hunter to your phone's contacts."
-							onPress={saveContact}
-						/>
-						<Divider color={theme.backgroundSelected as string} />
-						<Row
-							icon="square.and.arrow.up"
-							androidIcon="share"
-							label="Share this portfolio"
-							onPress={sharePortfolio}
-						/>
-					</ThemedView>
-				</Section>
-
-				<Section title="ABOUT">
-					<ThemedView type="backgroundElement" style={styles.card}>
-						<Row
-							icon="info.circle.fill"
-							androidIcon="info"
-							label="Learn more about this app"
-							helper="Stack, libraries, and features."
-							onPress={() => setLearnMoreOpen(true)}
-						/>
-						<Divider color={theme.backgroundSelected as string} />
-						<Row
-							icon="lock.shield.fill"
-							androidIcon="privacy_tip"
-							label="Privacy Policy"
-							onPress={() => router.push('/privacy')}
-						/>
-						<Divider color={theme.backgroundSelected as string} />
-						<Row
-							icon="doc.text.fill"
-							androidIcon="description"
-							label="Terms and Conditions"
-							onPress={() => router.push('/terms')}
-						/>
-						<Divider color={theme.backgroundSelected as string} />
-						<View style={styles.aboutRow}>
-							<ThemedText type="small" themeColor="textSecondary">
-								Version
-							</ThemedText>
-							<ThemedText type="smallBold">{appVersion}</ThemedText>
-						</View>
-						<Divider color={theme.backgroundSelected as string} />
-						<View style={styles.aboutRow}>
-							<ThemedText type="small" themeColor="textSecondary">
-								Built with
-							</ThemedText>
-							<ThemedText type="smallBold">Expo + React Native</ThemedText>
-						</View>
-					</ThemedView>
-				</Section>
-			</View>
+					<Section title="ABOUT">
+						<ThemedView type="backgroundElement" style={styles.card}>
+							<Row
+								icon="info.circle.fill"
+								androidIcon="info"
+								label="Learn more about this app"
+								helper="Stack, libraries, and features."
+								onPress={() => setLearnMoreOpen(true)}
+							/>
+							<Divider color={theme.backgroundSelected as string} />
+							<Row
+								icon="lock.shield.fill"
+								androidIcon="privacy_tip"
+								label="Privacy Policy"
+								onPress={() => router.push('/privacy')}
+							/>
+							<Divider color={theme.backgroundSelected as string} />
+							<Row
+								icon="doc.text.fill"
+								androidIcon="description"
+								label="Terms and Conditions"
+								onPress={() => router.push('/terms')}
+							/>
+							<Divider color={theme.backgroundSelected as string} />
+							<View style={styles.aboutRow}>
+								<ThemedText type="small" themeColor="textSecondary">
+									Version
+								</ThemedText>
+								<ThemedText type="smallBold">{appVersion}</ThemedText>
+							</View>
+							<Divider color={theme.backgroundSelected as string} />
+							<View style={styles.aboutRow}>
+								<ThemedText type="small" themeColor="textSecondary">
+									Built with
+								</ThemedText>
+								<ThemedText type="smallBold">Expo + React Native</ThemedText>
+							</View>
+						</ThemedView>
+					</Section>
+				</View>
+			</ScrollView>
 			<LearnMoreModal
 				visible={learnMoreOpen}
 				onClose={() => setLearnMoreOpen(false)}
 				appVersion={appVersion}
 			/>
-		</ScrollView>
+		</View>
 	)
 }
 
@@ -246,10 +179,14 @@ type LibraryItem = {
 }
 
 const STACK: LibraryItem[] = [
-	{ name: 'Expo SDK 56', description: 'Managed runtime, build, and OTA updates.' },
+	{
+		name: 'Expo SDK 56',
+		description: 'Managed runtime, build, and OTA updates.',
+	},
 	{
 		name: 'React Native 0.85 + React 19.2',
-		description: 'Single codebase rendering native UI on iOS, Android, and the web.',
+		description:
+			'Single codebase rendering native UI on iOS, Android, and the web.',
 	},
 	{
 		name: 'TypeScript',
@@ -292,7 +229,8 @@ const LIBRARIES: LibraryItem[] = [
 	},
 	{
 		name: 'react-native-safe-area-context',
-		description: 'Adapts every screen to notches, Dynamic Islands, and cutouts.',
+		description:
+			'Adapts every screen to notches, Dynamic Islands, and cutouts.',
 	},
 ]
 
@@ -332,7 +270,10 @@ function LearnMoreModal({
 						styles.modalHeader,
 						{
 							borderBottomColor: theme.backgroundElement,
-							paddingTop: Platform.OS === 'ios' ? Spacing.three : insets.top + Spacing.three,
+							paddingTop:
+								Platform.OS === 'ios'
+									? Spacing.three
+									: insets.top + Spacing.three,
 						},
 					]}
 				>
@@ -344,7 +285,11 @@ function LearnMoreModal({
 						accessibilityRole="button"
 						accessibilityLabel="Close"
 						onPress={onClose}
-						style={({ pressed }) => [styles.modalClose, pressed && styles.pressed]}
+						style={({ pressed, hovered }: PressableState) => [
+							styles.modalClose,
+							hovered && { opacity: 0.7 },
+							pressed && styles.pressed,
+						]}
 						hitSlop={12}
 					>
 						<ThemedText type="link" themeColor="text">
@@ -367,7 +312,10 @@ function LearnMoreModal({
 						<ThemedText type="subtitle" style={styles.modalIntroTitle}>
 							Hunter Wallen — Portfolio
 						</ThemedText>
-						<ThemedText themeColor="textSecondary" style={styles.modalIntroBody}>
+						<ThemedText
+							themeColor="textSecondary"
+							style={styles.modalIntroBody}
+						>
 							A cross-platform port of hunterwallen.com, written from scratch in
 							Expo SDK 56. The same React Native codebase ships to iOS, Android,
 							and the web with no per-platform forks of the screen logic.
@@ -433,10 +381,7 @@ function LearnMoreModal({
 											size={16}
 											tintColor="#3c87f7"
 										/>
-										<ThemedText
-											type="small"
-											style={styles.featureText}
-										>
+										<ThemedText type="small" style={styles.featureText}>
 											{feature}
 										</ThemedText>
 									</View>
@@ -501,7 +446,11 @@ function Row({
 			accessibilityRole="button"
 			accessibilityLabel={label}
 			onPress={onPress}
-			style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+			style={({ pressed, hovered }: PressableState) => [
+				styles.row,
+				hovered && { backgroundColor: theme.backgroundSelected },
+				pressed && styles.pressed,
+			]}
 		>
 			<View
 				style={[styles.rowIcon, { backgroundColor: theme.backgroundSelected }]}
@@ -544,6 +493,7 @@ function Divider({ color }: { color: string }) {
 }
 
 const styles = StyleSheet.create({
+	root: { flex: 1 },
 	scroll: { flex: 1 },
 	contentContainer: {
 		flexDirection: 'row',
@@ -567,8 +517,8 @@ const styles = StyleSheet.create({
 	},
 	card: {
 		borderRadius: Spacing.four,
-		paddingVertical: Spacing.two,
 		paddingHorizontal: Spacing.three,
+		overflow: 'hidden',
 	},
 	segmentRow: {
 		flexDirection: 'row',
@@ -584,12 +534,17 @@ const styles = StyleSheet.create({
 		paddingVertical: Spacing.two,
 		paddingHorizontal: Spacing.three,
 		borderRadius: Spacing.three,
+		...interactiveBase,
 	},
 	row: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		gap: Spacing.three,
 		paddingVertical: Spacing.three,
+		paddingHorizontal: Spacing.three,
+		marginHorizontal: -Spacing.three,
+		borderRadius: Spacing.two,
+		...interactiveBase,
 	},
 	rowIcon: {
 		width: 36,
@@ -635,6 +590,7 @@ const styles = StyleSheet.create({
 	modalClose: {
 		width: 60,
 		alignItems: 'flex-end',
+		...interactiveBase,
 	},
 	modalScroll: {
 		paddingTop: Spacing.four,

@@ -1,8 +1,15 @@
 import * as Clipboard from 'expo-clipboard'
 import { Image } from 'expo-image'
-import { Alert, Linking, Pressable, StyleSheet, View } from 'react-native'
+import {
+	Alert,
+	Linking,
+	Pressable,
+	StyleSheet,
+	View,
+	ViewStyle,
+} from 'react-native'
 
-import { Spacing } from '@/constants/theme'
+import { InteractiveTransition, Spacing } from '@/constants/theme'
 import { SocialLink, socials } from '@/data/portfolio'
 
 import { useToast } from './toast'
@@ -46,8 +53,9 @@ export function SocialRow({ size = 56 }: Props) {
 					accessibilityRole="link"
 					accessibilityLabel={social.label}
 					onPress={() => openSocial(social)}
-					style={({ pressed }) => [
+					style={({ pressed, hovered }: PressableState) => [
 						styles.iconWrapper,
+						hovered && styles.hovered,
 						pressed && styles.pressed,
 					]}
 				>
@@ -61,6 +69,10 @@ export function SocialRow({ size = 56 }: Props) {
 		</View>
 	)
 }
+
+type PressableState = { pressed: boolean; hovered?: boolean }
+
+const interactiveBase = InteractiveTransition as unknown as ViewStyle
 
 const styles = StyleSheet.create({
 	row: {
@@ -76,8 +88,15 @@ const styles = StyleSheet.create({
 		padding: Spacing.one,
 		flex: 1,
 		height: '100%',
+		borderRadius: Spacing.two,
+		...interactiveBase,
+	},
+	hovered: {
+		opacity: 0.75,
+		transform: [{ scale: 1.06 }],
 	},
 	pressed: {
-		opacity: 0.6,
+		opacity: 0.55,
+		transform: [{ scale: 0.97 }],
 	},
 })
