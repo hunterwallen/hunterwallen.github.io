@@ -3,17 +3,10 @@ import { Image as ExpoImage } from 'expo-image'
 import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router'
 import Head from 'expo-router/head'
 import { Tabs } from 'expo-router/js-tabs'
-import type { BottomTabBarButtonProps } from 'expo-router/js-tabs'
 import * as SplashScreen from 'expo-splash-screen'
 import { SymbolView } from 'expo-symbols'
 import { useEffect, useState } from 'react'
-import {
-	ColorValue,
-	Image as RNImage,
-	Pressable,
-	View,
-	ViewStyle,
-} from 'react-native'
+import { ColorValue, Image as RNImage, View, ViewStyle } from 'react-native'
 
 import { LoadingOverlay } from '@/components/loading-overlay'
 
@@ -57,27 +50,7 @@ function TabIcon({
 	)
 }
 
-type PressableState = { pressed: boolean; hovered?: boolean }
 const interactiveBase = InteractiveTransition as unknown as ViewStyle
-
-function AnimatedTabBarButton(props: BottomTabBarButtonProps) {
-	const { children, style, ...rest } = props as BottomTabBarButtonProps & {
-		[k: string]: unknown
-	}
-	return (
-		<Pressable
-			{...(rest as object)}
-			style={({ pressed, hovered }: PressableState) => [
-				style,
-				interactiveBase,
-				hovered && { opacity: 0.7 },
-				pressed && { opacity: 0.5 },
-			]}
-		>
-			{children}
-		</Pressable>
-	)
-}
 
 const MIN_OVERLAY_MS = 1500
 
@@ -184,7 +157,7 @@ function RootContent() {
 								backgroundColor: colors.background,
 								borderTopColor: colors.backgroundElement,
 							},
-							tabBarButton: props => <AnimatedTabBarButton {...props} />,
+							tabBarItemStyle: interactiveBase,
 						}}
 						screenListeners={{
 							tabPress: () => {
